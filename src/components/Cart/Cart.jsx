@@ -37,6 +37,10 @@ const Cart = props => {
     }
 
     const handleSubmitOrder = (userData) => {
+        console.log({
+            user: userData,
+            orderedItems: cartCtx.items
+        })
         setIsSubmiting(true)
         fetch('https://foodapp-e4906-default-rtdb.europe-west1.firebasedatabase.app/orders.json', {
             method: 'POST',
@@ -72,9 +76,9 @@ const Cart = props => {
 
     const isSubmittingModalContent = <p>Sending order data...</p>
 
-    const didSubmitModalContent = <div>
+    const didSubmitModalContent = <div className={classes.actions}>
         <p>Succesfully sent the order!</p>
-        <button className={classes['button--alt']} onClick={props.onClose}>Close</button>
+        <button className={classes.button} onClick={props.onClose}>Close</button>
     </div>
 
     return (
